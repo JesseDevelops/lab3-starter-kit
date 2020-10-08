@@ -4,7 +4,7 @@
     <router-link to="/teacher">Teacher</router-link> |
     <router-link to="/student">Student</router-link>
   </div>
-  <router-view/>
+  <router-view />
 </template>
 
 <style>
