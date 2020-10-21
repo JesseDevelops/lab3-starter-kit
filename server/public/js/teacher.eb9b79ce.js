@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["teacher"],{"57ec":function(e,c,n){"use strict";n.r(c);var t=n("7a23"),a={class:"teacher"},s=Object(t["f"])("h1",null,"This is the teacher's landing page",-1);function r(e,c,n,r,i,o){return Object(t["o"])(),Object(t["d"])("div",a,[s])}const i={};i.render=r;c["default"]=i}}]);
-//# sourceMappingURL=teacher.eb9b79ce.js.map

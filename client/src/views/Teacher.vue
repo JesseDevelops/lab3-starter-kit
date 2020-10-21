@@ -42,6 +42,7 @@ export default {
       question_type: "",
       question_time: 0,
       question_score: 0,
+      students: [],
     }
   }
 }
