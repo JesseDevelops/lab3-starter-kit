@@ -39,11 +39,6 @@
 
 <script>
 export default {
-  sockets: {
-    connect: function () {
-      console.log('socket to notification channel connected')
-    },
-  },
   data() {
     return {
       sessionId: null,
