@@ -20,6 +20,12 @@ io.on('connection', (socket) => {
 
         io.emit('student-registered', {id: socket.id, studentName: data.studentName});
     });
+
+    socket.on('teacher-new-question', (data) => {
+        console.log("Teacher has submitted a question", data);
+
+        io.emit('teacher-new-question', {id: socket.id, question: data});
+    });
 });
 
 http.listen(3000, () => {
