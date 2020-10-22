@@ -14,6 +14,12 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         console.log("A user disconnected");
     });
+
+    socket.on('student-registered', (data) => {
+        console.log("A student has been registered", data);
+
+        io.emit('student-registered', {id: socket.id, studentName: data.studentName});
+    });
 });
 
 http.listen(3000, () => {
