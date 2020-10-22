@@ -46,6 +46,7 @@ export default {
   },
   data() {
     return {
+      ready: false,
       studentName: null,
       statusText: "Waiting for a question...",
       leaderboardScores: [],
@@ -53,12 +54,12 @@ export default {
   },
   computed: {
     isReady() {
-      return this.sessionId ? true : false;
+      return this.ready;
     }
   },
   methods: {
     startSession() {
-      console.log(this.studentName);
+      this.ready = true;
       this.$socket.emit('student-registered', {studentName: this.studentName});
     }
   }
@@ -82,6 +83,7 @@ export default {
 .dialog .content {
   padding: 30px;
   width: 70%;
+  max-width: 500px;
   border: 1px solid rgba(0, 0, 0, 0.4);
   border-radius: 10px;
   box-shadow: -10px 10px 20px -10px rgba(0, 0, 0, 0.2);

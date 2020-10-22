@@ -12,9 +12,7 @@ export default {
     },
   },
   data() {
-    return {
-      students: [],
-    }
+    return {}
   },
   mounted() {
   }
