@@ -39,9 +39,13 @@
 
 <script>
 export default {
+  sockets: {
+    connect() {
+      console.log('Student.vue: socket connected');
+    }
+  },
   data() {
     return {
-      sessionId: null,
       studentName: null,
       statusText: "Waiting for a question...",
       leaderboardScores: [],
@@ -55,7 +59,7 @@ export default {
   methods: {
     startSession() {
       console.log(this.studentName);
-      this.sessionId = Math.floor(Math.random() * 90000) + 10000;
+      this.$socket.emit('student-registered', {studentName: this.studentName});
     }
   }
 }

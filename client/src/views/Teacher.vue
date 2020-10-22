@@ -5,23 +5,23 @@
 
     <div class="row">
       <div class="col-6">
-        <select v-model="question_type">
+        <select v-model="questionType">
           <option value="">Select a question type</option>
           <option value="multiple">Multiple Choice</option>
           <option value="matching">Matching Pairs</option>
         </select>
       </div>
       <div class="col-4">
-        <input type="number" min="0" placeholder="Score" v-model="question_score">
+        <input type="number" min="0" placeholder="Score" v-model="questionScore">
       </div>
       <div class="col-2">
-        <TimeInput min="10" max="90" step="5" placeholder="Time" v-model="question_time" @input="question_time = $event" />
+        <TimeInput min="10" max="90" step="5" placeholder="Time" v-model="questionTime" @input="questionTime = $event" />
       </div>
     </div>
 
     <div class="row">
       <div class="col-12">
-        <QuestionEntry v-bind:type="question_type" />
+        <QuestionEntry v-bind:type="questionType" />
       </div>
     </div>
 
@@ -33,17 +33,28 @@ import TimeInput from '../components/TimeInput';
 import QuestionEntry from '../components/QuestionEntry';
 
 export default {
+  sockets: {
+    connect() {
+      console.log('Teacher.vue: socket connected');
+
+      this.sockets.subscribe('student-registered', (data) => {
+        this.students.push(data);
+      })
+    }
+  },
   components: {
     TimeInput,
     QuestionEntry,
   },
   data() {
     return {
-      question_type: "",
-      question_time: 0,
-      question_score: 0,
+      questionType: "",
+      questionTime: 0,
+      questionScore: 0,
       students: [],
     }
+  },
+  mounted() {
   }
 }
 </script>

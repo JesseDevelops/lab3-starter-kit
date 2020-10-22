@@ -1,11 +1,25 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/teacher">Teacher</router-link> |
-    <router-link to="/student">Student</router-link>
+  <div id="app">
+    <router-view></router-view>
   </div>
-  <router-view />
 </template>
+
+<script>
+export default {
+  sockets: {
+    connect() {
+      console.log('App.vue socket connected');
+    },
+  },
+  data() {
+    return {
+      students: [],
+    }
+  },
+  mounted() {
+  }
+}
+</script>
 
 <style>
 #app {
