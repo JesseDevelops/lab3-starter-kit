@@ -33,6 +33,7 @@ input[type=number],
 textarea,
 select {
   width: 100%;
+  padding: 4px;
 }
 
 .text-right {

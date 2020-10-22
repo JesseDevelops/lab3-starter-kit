@@ -1,7 +1,7 @@
 <template>
     <div>
-        <input type="number" readonly v-model="selected_value" @focus="focused" v-bind:min="min" v-bind:max="max" v-bind:placeholder="placeholder">
-        <div v-show="field_focused">
+        <input type="number" readonly v-model="selectedValue" @focus="focused" v-bind:min="min" v-bind:max="max" v-bind:placeholder="placeholder">
+        <div v-show="fieldFocused">
             <input type="range" @change="changed" v-bind:min="min" v-bind:max="max" v-bind:step="step">
         </div>
     </div>
@@ -13,18 +13,18 @@ export default {
     props: ['min', 'max', 'placeholder', 'step'],
     methods: {
         changed(evt) {
-            this.selected_value = evt.target.value;
-            this.field_focused = false;
-            this.$emit('input', this.selected_value);
+            this.selectedValue = evt.target.value;
+            this.fieldFocused = false;
+            this.$emit('input', this.selectedValue);
         },
         focused() {
-            this.field_focused = true;
+            this.fieldFocused = true;
         }
     },
     data() {
         return {
-            field_focused: false,
-            selected_value: 0,
+            fieldFocused: false,
+            selectedValue: 0,
         }
     }
 }

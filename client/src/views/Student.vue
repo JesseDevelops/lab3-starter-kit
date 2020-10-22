@@ -33,6 +33,12 @@
           <button @click.prevent="startSession">Start</button>
         </div>
       </div>
+
+      <div class="question" v-if="this.activeQuestion">
+        <div class="content">
+          A question came in!
+        </div>
+      </div>
     </form>
   </div>
 </template>
@@ -50,6 +56,7 @@ export default {
       studentName: null,
       statusText: "Waiting for a question...",
       leaderboardScores: [],
+      activeQuestion: null,
     }
   },
   computed: {
@@ -61,6 +68,11 @@ export default {
     startSession() {
       this.ready = true;
       this.$socket.emit('student-registered', {studentName: this.studentName});
+
+      this.sockets.subscribe('teacher-new-question', (data) => {
+        this.activeQuestion = data.question;
+      });
+
     }
   }
 }
@@ -68,6 +80,7 @@ export default {
 
 <style scoped>
 
+.question,
 .dialog {
   position: absolute;
   left: 0;
@@ -80,6 +93,7 @@ export default {
   align-items: center;
 }
 
+.question .content,
 .dialog .content {
   padding: 30px;
   width: 70%;
