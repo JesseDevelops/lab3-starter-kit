@@ -73,7 +73,13 @@ export default {
         this.activeQuestion = data.question;
       });
 
+      // You want to also "unsubscribe" when the user 
+      // disconnects, or the component is destroyed.
+
     }
+  },
+  destroyed() {
+    // this.sockets.unsubscribe('teacher-new-question');
   }
 }
 </script>

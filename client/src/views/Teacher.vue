@@ -61,13 +61,13 @@ export default {
   methods: {
     poseQuestionToStudents() {
       this.$socket.emit('teacher-new-question', {
-        questionContent: this.questionContent,
-        questionTime: this.questionTime,
-        questionScore: this.questionScore,
-        questionType: this.questionType,
+        questionContent: this.questionContent, // Question and answers to question
+        questionTime: this.questionTime, // Time to answer question
+        questionScore: this.questionScore, // Score for getting question correct
+        questionType: this.questionType, // Type of question (multiple, matching)
       });
       this.questionPosted = true;
-    }
+    },
   },
   computed: {
     isQuestionReady() {
